@@ -1,4 +1,4 @@
-const {vectorAdd, vectorSubtract, vectorIsLessThanOrEqual} = require('./vector-controller');
+const {vectorAdd, vectorSubtract, vectorIsLessThanOrEqual, vectorIsTrivial} = require('./vector-controller');
 
 function verifySafeState({available, need, allocation}) {
     let safe_sequence = [];
@@ -40,10 +40,21 @@ function verifyRequestInCurrentState({available, need, allocation, process_index
     }
 }
 
-function detectDeadlock(available, request, allocation) {
-
+function detectDeadlock({available, request, allocation}) {
+    let work = [...available];
+    let finish = allocation.map(allocation_i => vectorIsTrivial(allocation_i));
+    let deadlocked_processes = Object.keys(allocation)
+        .map(index => parseInt(index))
+        .filter(index => finish[index] === false);
+    let i;
+    while (i = finish.findIndex((finish_i, i) => (finish_i === false && vectorIsLessThanOrEqual(request[i], work))), i > -1) {
+        work = vectorAdd(work, allocation[i]);
+        finish[i] = true;
+        deadlocked_processes = deadlocked_processes.filter(process_index => process_index !== i);
+    }
+    return {deadlocked_processes, is_deadlock: finish.filter(finish_i => finish_i === false).length > 1};
 }
 
-module.exports = {verifySafeState, verifyRequestInCurrentState};
+module.exports = {verifySafeState, verifyRequestInCurrentState, detectDeadlock};
 
 

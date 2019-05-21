@@ -11,8 +11,8 @@ verify_request_input.on('completed', ({allocation, max, available, process_index
 
     const {grantable_now, reason} = verifyRequestInCurrentState({available, need, allocation, process_index, request});
 
+    console.log("Reason:\t\t", reason);
     console.log("Is grantable:\t", grantable_now);
-    console.log("Reason:\t", reason);
 });
 
 verify_request_input.start();

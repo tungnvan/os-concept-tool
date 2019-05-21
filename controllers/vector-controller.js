@@ -22,4 +22,12 @@ function vectorIsLessThanOrEqual(vector_a, vector_b) {
     }
 }
 
-module.exports = {vectorAdd, vectorSubtract, vectorIsLessThanOrEqual};
+function vectorIsTrivial(vector) {
+    if (Array.isArray(vector)) {
+        return vector.every(el => el === 0);
+    } else {
+        return false;
+    }
+}
+
+module.exports = {vectorAdd, vectorSubtract, vectorIsLessThanOrEqual, vectorIsTrivial};
