@@ -9,6 +9,7 @@ function verifySafeState({available, need, allocation}) {
         work = vectorAdd(work, allocation[i]);
         finish[i] = true;
         safe_sequence.push(i);
+        // console.log(finish);
     }
     return {safe_sequence, is_safe: finish.every(finish_i => finish_i)};
 }
