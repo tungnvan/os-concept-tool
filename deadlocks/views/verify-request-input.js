@@ -1,5 +1,5 @@
 const verify_safe_state_input = require('./verify-safe-state-input');
-const {queryOneLine, closeInput} = require('./input');
+const {queryOneLine, closeInput} = require('../../input/input');
 
 let process_index = 0;
 let request = [];
