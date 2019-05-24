@@ -1,4 +1,4 @@
-const {queryOneLine, queryMultipleLines, closeInput} = require('../../input/input');
+const {queryOneLine, queryMultipleLines, closeInput} = require('../../commons/input');
 
 let number_of_processes = 0;
 let max = [];

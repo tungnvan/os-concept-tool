@@ -1,4 +1,4 @@
-const {vectorSubtract} = require('./controllers/vector-controller');
+const {vectorSubtract} = require('../commons/vector');
 const {verifySafeState} = require('./controllers/deadlock-controller');
 const verify_safe_state_input = require('./views/verify-safe-state-input');
 

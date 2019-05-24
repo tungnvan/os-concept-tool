@@ -1,5 +1,5 @@
 const {verifyRequestInCurrentState} = require('./controllers/deadlock-controller');
-const {vectorSubtract} = require('./controllers/vector-controller');
+const {vectorSubtract} = require('../commons/vector');
 const verify_request_input = require('./views/verify-request-input');
 
 verify_request_input.on('completed', ({allocation, max, available, process_index, request}) => {
