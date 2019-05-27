@@ -3,7 +3,7 @@ function queue() {
     const data = [];
 
     function enqueue(item) {
-        data.pushTop(item);
+        data.push(item);
     }
 
     function dequeue() {

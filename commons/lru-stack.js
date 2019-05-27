@@ -1,30 +1,24 @@
-function LRUStack() {
+function LRUStack(maximum_size) {
 
     const data = [];
 
-    function pushTop(item) {
+    function push(item) {
+        const referenced_index = data.indexOf(item);
+        let eliminated = null;
+        if (referenced_index > -1) {
+            data.splice(referenced_index, 1);
+        } else if (size() === maximum_size) {
+            eliminated = data.splice(0, 1)[0];
+        }
         data.push(item);
-    }
-
-    function replaceBottom(new_item) {
-        data[0] = new_item;
-    }
-
-    function moveToTop(item) {
-        const i = data.indexOf(item);
-        data.splice(i, 1);
-        data[size()] = item;
-    }
-
-    function bottom() {
-        return data[0];
+        return eliminated;
     }
 
     function size() {
         return data.length;
     }
 
-    return {pushTop, replaceBottom, moveToTop, bottom, size};
+    return {push, size};
 
 }
 
