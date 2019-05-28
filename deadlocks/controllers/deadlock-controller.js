@@ -8,7 +8,7 @@ function verifySafeState({available, need, allocation}) {
     while (i = finish.findIndex((finish_i, i) => (finish_i === false && vectorIsLessThanOrEqual(need[i], work))), i > -1) {
         work = vectorAdd(work, allocation[i]);
         finish[i] = true;
-        safe_sequence.pushTop(i);
+        safe_sequence.push(i);
         // console.log(finish);
     }
     return {safe_sequence, is_safe: finish.every(finish_i => finish_i)};

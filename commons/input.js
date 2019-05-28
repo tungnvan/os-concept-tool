@@ -20,7 +20,7 @@ function queryMultipleLines(number_of_line, question, handler, next) {
     const lines = [];
     const line_handler = (line) => {
         ++count;
-        lines.pushTop(line);
+        lines.push(line);
         if (count === number_of_line) {
             rl.removeListener('line', line_handler);
             handler(lines);
